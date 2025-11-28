@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수도권 수질 인터랙티브 지도</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+</head>
+<body>
+  <div id="container">
+    <div id="map"></div>
+    <div id="info-panel">
+      <h1 id="main-title">수도권 수질 인터랙티브 지도</h1>
+      <p id="main-instruction">버튼을 클릭하거나 드롭다운 메뉴에서 위치를 선택하세요!</p>
+
+      <select id="location-dropdown" onchange="goToLocation()">
+        <option value="">위치 선택</option>
+        <option value="암사 (Amsa)">암사 (Amsa)</option>
+        <option value="구의 (Guui)">구의 (Guui)</option>
+        <option value="잠실 (Jamsil)">잠실 (Jamsil)</option>
+        <option value="보광 (Bogwang)">보광 (Bogwang)</option>
+        <option value="노량진 (Noryangjin)">노량진 (Noryangjin)</option>
+        <option value="영등포 (Yeongdeungpo)">영등포 (Yeongdeungpo)</option>
+        <option value="가양 (Gayang)">가양 (Gayang)</option>
+        <option value="행주 (Haengju)">행주 (Haengju)</option>
+        <option value="탄천6 (Tancheon6)">탄천6 (Tancheon6)</option>
+        <option value="중랑천6 (Jungnangcheon6)">중랑천6 (Jungnangcheon6)</option>
+        <option value="안양천10 (Anyangcheon10)">안양천10 (Anyangcheon10)</option>
+        <option value="뚝도 (Ttukdo)">뚝도 (Ttukdo)</option>
+        <option value="팔당댐 (Paldangdam)">팔당댐 (Paldangdam)</option>
+        <option value="홍제천 (Hongjecheon)">홍제천 (Hongjecheon)</option>
+        <option value="양재천 (Yangjaecheon)">양재천 (Yangjaecheon)</option>
+        <option value="정릉천 (Jeongneungcheon)">정릉천 (Jeongneungcheon)</option>
+        <option value="도림천 (Dorimcheon)">도림천 (Dorimcheon)</option>
+        <option value="목감천1 (Mokgamcheon1)">목감천1 (Mokgamcheon1)</option>
+        <option value="고덕천 (Godeokcheon)">고덕천 (Godeokcheon)</option>
+        <option value="성내천 (Seongnaechon)">성내천 (Seongnaechon)</option>
+        <option value="청계천1 (Cheonggyecheon1)">청계천1 (Cheonggyecheon1)</option>
+        <option value="청계천2 (Cheonggyecheon2)">청계천2 (Cheonggyecheon2)</option>
+        <option value="청계천3 (Cheonggyecheon3)">청계천3 (Cheonggyecheon3)</option>
+        <option value="성북천 (Seongbukcheon)">성북천 (Seongbukcheon)</option>
+        <option value="우이천 (Uicheon)">우이천 (Uicheon)</option>
+      </select>
+
+      <div id="map-buttons">
+        <button onclick="changeMap('osm')">일반지도</button>
+        <button onclick="changeMap('cartodb-dark')">다크 모드</button>
+        <button onclick="changeMap('esri-imagery')">위성지도</button>
+      </div>
+      
+      <div>
+        <table>
+            <tr><th id="water-quality-1"></th><th id="plain">오염 농도</th></tr>
+            <tr><td id="water-quality-2"></td><td id="plain">매우 좋음</td></tr>
+            <tr><td id="water-quality-3"></td><td id="plain">좋음</td></tr>
+            <tr><td id="water-quality-4"></td><td id="plain">보통</td></tr>
+            <tr><td id="water-quality-5"></td><td id="plain">나쁨</td></tr>
+            <tr><td id="water-quality-6"></td><td id="plain">매우 나쁨</td></tr>
+        </table>
+      </div>
+      
+      <div>  
+        <br>
+        <table>
+            <tr><th id="roles">DK-RED</th></tr>
+            <tr><td id="plain">기획자: 정리아</td></tr>
+            <tr><td id="plain">개발자: 권태훈</td></tr>
+            <tr><td id="plain">개발자: 조데니엘</td></tr>
+            <tr><td id="plain">디자이너: Dina Miabi</td></tr>
+            <tr><td id="plain">디자이너: 이예지</td></tr>
+        </table>
+      </div>
+
+      <div id="location-info-container">
+        <div id="location-info">
+          <h2 id="location-title">Location Info</h2>
+          <p id="location-description">Select a location or click a marker to see details here.</p>
+          <br>
+          <p>출처: <a href="https://data.seoul.go.kr/dataList/OA-15488/S/1/datasetView.do">https://data.seoul.go.kr/dataList/OA-15488/S/1/datasetView.do</a></p>
+          <button id="return-home" onclick="returnToHome()">돌아가기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js">
+
+  </script>
+</body>
+</html>
